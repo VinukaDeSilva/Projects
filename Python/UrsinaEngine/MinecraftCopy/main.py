@@ -12,9 +12,12 @@ window.borderless = False
 window.exit_button.visible = False
 
 # Exit using the escape key
+
+
 def input(key):
     if key == 'q' or key == 'escape':
         quit()
+
 
 # Textures for the blocks
 grass_texture = load_texture('assets/grass_block.png')
@@ -28,6 +31,8 @@ glass_texture = load_texture('assets/Glass_block.png')
 block_pick = 1
 
 # Always updated
+
+
 def update():
     # Switching between block types
     global block_pick
@@ -43,16 +48,18 @@ def update():
         block_pick = 5
 
 # A custom class for a block
+
+
 class Voxel(Button):
-    def __init__(self, position=(0,0,0), texture=grass_texture):
+    def __init__(self, position=(0, 0, 0), texture=grass_texture):
         super().__init__(
-            parent = scene,
-            position = position,
-            model = 'assets/block',
-            origin_y = 0.5,
-            texture = texture,
-            color = color.color(0,0,random.uniform(0.9, 1)),
-            scale = 0.5
+            parent=scene,
+            position=position,
+            model='assets/block',
+            origin_y=0.5,
+            texture=texture,
+            color=color.color(0, 0, random.uniform(0.9, 1)),
+            scale=0.5
         )
 
     # Placing block
@@ -60,40 +67,48 @@ class Voxel(Button):
         if self.hovered:
             if key == 'left mouse down' or key == 'enter':
                 if block_pick == 1:
-                    voxel = Voxel(position = self.position + mouse.normal, texture = grass_texture)
+                    voxel = Voxel(position=self.position +
+                                  mouse.normal, texture=grass_texture)
                 if block_pick == 2:
-                    voxel = Voxel(position = self.position + mouse.normal, texture = stone_texture)
+                    voxel = Voxel(position=self.position +
+                                  mouse.normal, texture=stone_texture)
                 if block_pick == 3:
-                    voxel = Voxel(position = self.position + mouse.normal, texture = brick_texture)
+                    voxel = Voxel(position=self.position +
+                                  mouse.normal, texture=brick_texture)
                 if block_pick == 4:
-                    voxel = Voxel(position = self.position + mouse.normal, texture = dirt_texture)
+                    voxel = Voxel(position=self.position +
+                                  mouse.normal, texture=dirt_texture)
                 if block_pick == 5:
-                    voxel = Voxel(position = self.position + mouse.normal, texture = glass_texture)
-                
+                    voxel = Voxel(position=self.position +
+                                  mouse.normal, texture=glass_texture)
+
             # Destroying blocks
             if key == 'right mouse down':
                 destroy(self)
 
 # The sky of the world
+
+
 class Sky(Entity):
     def __init__(self):
         super().__init__(
-            parent = scene,
-            model = 'sphere',
-            texture = sky_texture,
-            scale = 160,
-            double_sided = True
+            parent=scene,
+            model='sphere',
+            texture=sky_texture,
+            scale=160,
+            double_sided=True
         )
 
+
 # Using perlin noise
-noise = PerlinNoise (octaves=2,seed=random.randint(1,1000000))
+noise = PerlinNoise(octaves=2, seed=random.randint(1, 1000000))
 
 # Using perlin noise as well as creating the world
-for z in range(-50,50):
-    for x in range(-50,50):
-        y = noise([x * .02,z * .02])
+for z in range(-50, 50):
+    for x in range(-50, 50):
+        y = noise([x * .02, z * .02])
         y = math.floor(y * 7.5)
-        voxel = Voxel(position=(x,y,z))
+        voxel = Voxel(position=(x, y, z))
 
 
 player = FirstPersonController()
