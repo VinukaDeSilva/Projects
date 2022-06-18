@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+
+}
+
+body {
+    background-image: linear-gradient(120deg, #e2c462, #dd8a73);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    font-size: 3rem;
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    color: #dd8a73;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #dd8a73;
+    color: white;
+}
+
+#question-el {
+    font-size: 1.5rem;
+}
+
+#answer-el {
+    font-size: 1.5rem;
+}

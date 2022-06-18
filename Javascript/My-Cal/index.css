@@ -1,0 +1,28 @@
+html body {
+    font-style: italic;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: crimson;
+    border-color: darkred;
+    color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-image: linear-gradient(120deg, #e2c462, #dd8a73);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
